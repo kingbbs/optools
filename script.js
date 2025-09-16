@@ -233,9 +233,9 @@ class OpTools {
             selectedPorts.push(parseInt(checkbox.value));
         });
 
+        // If no ports selected, default to port 80
         if (selectedPorts.length === 0) {
-            this.showNotification('Please select at least one port to test', 'error');
-            return;
+            selectedPorts.push(80);
         }
 
         // Show loading
