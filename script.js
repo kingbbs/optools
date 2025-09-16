@@ -380,7 +380,7 @@ class OpTools {
                                 顯示詳細
                             </button>
                         </h5>
-                        <pre id="${outputId}" style="display: none; margin-top: 8px; background: #f8f9fa; padding: 10px; border-radius: 4px; font-size: 12px; overflow-x: auto;">${result.output}</pre>
+                        <pre id="${outputId}" class="terminal-output" style="display: none;">${result.output}</pre>
                     </div>
                 `;
             });
