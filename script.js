@@ -221,9 +221,20 @@ class OpTools {
         const results = document.getElementById('results');
         const checkBtn = document.getElementById('check-domain-btn');
 
-        const domain = domainInput.value.trim();
+        let domain = domainInput.value.trim();
         if (!domain) {
             this.showNotification('Please enter a domain', 'error');
+            return;
+        }
+
+        // Clean domain - remove protocol and path
+        domain = domain.replace(/^https?:\/\//, ''); // Remove http:// or https://
+        domain = domain.replace(/\/.*$/, ''); // Remove path
+        domain = domain.replace(/:\d+$/, ''); // Remove port
+        domain = domain.trim();
+
+        if (!domain) {
+            this.showNotification('Please enter a valid domain', 'error');
             return;
         }
 
