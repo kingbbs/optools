@@ -366,15 +366,21 @@ class OpTools {
                     <h4>IP: ${ip}</h4>
             `;
             
-            ipResults.forEach(result => {
+            ipResults.forEach((result, index) => {
                 const status = result.success ? 'Success' : 'Failed';
                 const statusColor = result.success ? 'green' : 'red';
                 const portLabel = result.port === 443 ? 'HTTPS' : result.port === 80 ? 'HTTP' : '';
+                const outputId = `output-${ip.replace(/\./g, '-')}-${result.port}`;
                 
                 html += `
                     <div style="margin: 10px 0; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 4px;">
-                        <h5 style="margin-bottom: 8px;">Port ${result.port} ${portLabel} - <span style="color: ${statusColor}">${status}</span></h5>
-                        <pre>${result.output}</pre>
+                        <h5 style="margin-bottom: 8px;">
+                            Port ${result.port} ${portLabel} - <span style="color: ${statusColor}">${status}</span>
+                            <button onclick="toggleOutput('${outputId}')" style="margin-left: 10px; padding: 2px 8px; font-size: 12px; background: #667eea; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                顯示詳細
+                            </button>
+                        </h5>
+                        <pre id="${outputId}" style="display: none; margin-top: 8px; background: #f8f9fa; padding: 10px; border-radius: 4px; font-size: 12px; overflow-x: auto;">${result.output}</pre>
                     </div>
                 `;
             });
@@ -1871,6 +1877,20 @@ class OpTools {
             noCommon: 'Not a common password'
         };
         return texts[check] || check;
+    }
+}
+
+// Global function for toggling terminal output display
+function toggleOutput(outputId) {
+    const outputElement = document.getElementById(outputId);
+    const button = event.target;
+    
+    if (outputElement.style.display === 'none') {
+        outputElement.style.display = 'block';
+        button.textContent = '隱藏詳細';
+    } else {
+        outputElement.style.display = 'none';
+        button.textContent = '顯示詳細';
     }
 }
 
