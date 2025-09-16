@@ -141,14 +141,14 @@ pm2 startup | grep "sudo" | bash
 pm2 save
 
 # 詢問是否安裝 Nginx
-read -p "是否安裝和配置 Nginx 反向代理？(y/N): " nginx_choice
-if [[ $nginx_choice =~ ^[Yy]$ ]]; then
+read -p "是否安裝和配置 Nginx 反向代理？(Y/n): " nginx_choice
+if [[ ! $nginx_choice =~ ^[Nn]$ ]]; then
     print_message $BLUE "📦 安裝 Nginx..."
     sudo apt install -y nginx
     
-    read -p "請輸入您的域名（或留空使用 IP）: " domain_name
+    read -p "請輸入您的域名 (預設: optools.saycoo.com): " domain_name
     if [ -z "$domain_name" ]; then
-        domain_name="_"
+        domain_name="optools.saycoo.com"
     fi
     
     # 創建 Nginx 配置
@@ -186,6 +186,23 @@ EOF
     sudo systemctl enable nginx
     
     print_message $GREEN "✅ Nginx 配置完成"
+    
+    # 詢問是否配置 SSL
+    if [[ "$domain_name" != "_" && "$domain_name" != "localhost" ]]; then
+        read -p "是否自動配置 SSL 證書 (Let's Encrypt)？(Y/n): " ssl_choice
+        if [[ ! $ssl_choice =~ ^[Nn]$ ]]; then
+            print_message $BLUE "🔒 安裝 Certbot..."
+            sudo apt install -y certbot python3-certbot-nginx
+            
+            print_message $BLUE "🔐 申請 SSL 證書..."
+            sudo certbot --nginx -d "$domain_name" --non-interactive --agree-tos --email admin@saycoo.com
+            
+            # 設置自動續期
+            echo "0 12 * * * /usr/bin/certbot renew --quiet" | sudo crontab -
+            
+            print_message $GREEN "✅ SSL 證書配置完成"
+        fi
+    fi
 fi
 
 # 配置防火牆
@@ -195,7 +212,7 @@ sudo ufw allow 22/tcp  # SSH
 sudo ufw allow 80/tcp  # HTTP
 sudo ufw allow 443/tcp # HTTPS
 
-if [[ ! $nginx_choice =~ ^[Yy]$ ]]; then
+if [[ $nginx_choice =~ ^[Nn]$ ]]; then
     sudo ufw allow 3080/tcp  # 應用直接端口
 fi
 
@@ -229,9 +246,14 @@ print_message $BLUE "📋 部署信息："
 print_message $GREEN "   應用目錄：$DEPLOY_DIR"
 print_message $GREEN "   應用端口：3080"
 
-if [[ $nginx_choice =~ ^[Yy]$ ]]; then
+if [[ ! $nginx_choice =~ ^[Nn]$ ]]; then
     if [ "$domain_name" != "_" ]; then
-        print_message $GREEN "   訪問地址：http://$domain_name"
+        # 檢查是否配置了 SSL
+        if [[ ! $ssl_choice =~ ^[Nn]$ ]] && [[ "$domain_name" != "_" && "$domain_name" != "localhost" ]]; then
+            print_message $GREEN "   訪問地址：https://$domain_name"
+        else
+            print_message $GREEN "   訪問地址：http://$domain_name"
+        fi
     else
         SERVER_IP=$(curl -s ifconfig.me || hostname -I | awk '{print $1}')
         print_message $GREEN "   訪問地址：http://$SERVER_IP"
