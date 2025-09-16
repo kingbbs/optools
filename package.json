@@ -1,0 +1,35 @@
+{
+  "name": "optools",
+  "version": "1.0.0",
+  "description": "All-in-one operations toolkit",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "start": "cd server && npm start"
+  },
+  "keywords": [
+    "devops",
+    "tools",
+    "network",
+    "utilities"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dns2": "^2.1.0",
+    "express": "^5.1.0",
+    "lighthouse": "^12.8.2",
+    "puppeteer": "^24.21.0",
+    "tls-keygen": "^3.7.0",
+    "whois": "^2.15.0"
+  }
+}

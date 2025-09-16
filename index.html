@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpTools - Operations Toolkit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">OpTools</h1>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <button class="settings-btn" aria-label="Settings">⚙️</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <a href="#dashboard" class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="#network" class="nav-item">
+                    <span class="nav-icon">🌐</span>
+                    <span class="nav-text">Network Tools</span>
+                </a>
+                <a href="#security" class="nav-item">
+                    <span class="nav-icon">🔒</span>
+                    <span class="nav-text">Security Tools</span>
+                </a>
+                <a href="#encoders" class="nav-item">
+                    <span class="nav-icon">🔄</span>
+                    <span class="nav-text">Encoders/Decoders</span>
+                </a>
+                <a href="#generators" class="nav-item">
+                    <span class="nav-icon">🎲</span>
+                    <span class="nav-text">Generators</span>
+                </a>
+                <a href="#performance" class="nav-item">
+                    <span class="nav-icon">⚡</span>
+                    <span class="nav-text">Performance Tools</span>
+                </a>
+                <a href="#security-checks" class="nav-item">
+                    <span class="nav-icon">🛡️</span>
+                    <span class="nav-text">Security Checks</span>
+                </a>
+                <a href="#settings" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h2>Dashboard</h2>
+                    <p class="welcome-text">Welcome to OpTools – Your all-in-one operations toolkit</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <h3>Team Members</h3>
+                            <p class="stat-value">8</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔒</div>
+                        <div class="stat-content">
+                            <h3>Security Score</h3>
+                            <p class="stat-value">98%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3>Active Tools</h3>
+                            <p class="stat-value">12</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <h3>Tasks Completed</h3>
+                            <p class="stat-value">234</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="actions-grid">
+                        <button class="action-card" data-action="ping-test">
+                            <h4>Ping Test</h4>
+                            <p>Check server availability</p>
+                        </button>
+                        <button class="action-card" data-action="base64-encode">
+                            <h4>Base64 Encode</h4>
+                            <p>Encode text to Base64</p>
+                        </button>
+                        <button class="action-card" data-action="generate-password">
+                            <h4>Generate Password</h4>
+                            <p>Create secure password</p>
+                        </button>
+                        <button class="action-card" data-action="domain-lookup">
+                            <h4>Domain Lookup</h4>
+                            <p>Check domain information</p>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Network Tools Section -->
+            <section id="network" class="content-section">
+                <div class="section-header">
+                    <h2>Network Tools</h2>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="domain-resolver">
+                        <h3>Domain Resolver</h3>
+                        <p>Check domain IP addresses and test connectivity</p>
+                        <button class="tool-btn">Use Tool</button>
+                    </div>
+                    <div class="tool-card" data-tool="port-scanner">
+                        <h3>Port Scanner</h3>
+                        <p>Scan open ports on a target host</p>
+                        <button class="tool-btn">Use Tool</button>
+                    </div>
+                    <div class="tool-card" data-tool="ping-test">
+                        <h3>Ping Test</h3>
+                        <p>Test network connectivity to a host</p>
+                        <button class="tool-btn">Use Tool</button>
+                    </div>
+                    <div class="tool-card" data-tool="traceroute">
+                        <h3>Traceroute</h3>
+                        <p>Trace network path to destination</p>
+                        <button class="tool-btn">Use Tool</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other sections (hidden by default) -->
+            <section id="security" class="content-section">
+                <div class="section-header">
+                    <h2>Security Tools</h2>
+                    <p>Tools for security analysis and testing</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="ip-lookup">
+                        <h3>IP Lookup</h3>
+                        <p>Get geolocation and ISP info for IP addresses</p>
+                        <button class="tool-btn">Lookup IP</button>
+                    </div>
+                    <div class="tool-card" data-tool="whois-lookup">
+                        <h3>WHOIS Lookup</h3>
+                        <p>Domain registration information</p>
+                        <button class="tool-btn">WHOIS Lookup</button>
+                    </div>
+                    <div class="tool-card" data-tool="dns-lookup">
+                        <h3>DNS Lookup</h3>
+                        <p>Query DNS records for domains</p>
+                        <button class="tool-btn">DNS Lookup</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="encoders" class="content-section">
+                <div class="section-header">
+                    <h2>Encoders/Decoders</h2>
+                    <p>Transform data between different encoding formats</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="base64">
+                        <h3>Base64</h3>
+                        <p>Encode and decode Base64 strings</p>
+                        <button class="tool-btn">Open Tool</button>
+                    </div>
+                    <div class="tool-card" data-tool="url-encoder">
+                        <h3>URL Encoder</h3>
+                        <p>Encode and decode URL strings</p>
+                        <button class="tool-btn">Open Tool</button>
+                    </div>
+                    <div class="tool-card" data-tool="html-encoder">
+                        <h3>HTML Entity</h3>
+                        <p>Encode and decode HTML entities</p>
+                        <button class="tool-btn">Open Tool</button>
+                    </div>
+                    <div class="tool-card" data-tool="jwt-decoder">
+                        <h3>JWT Decoder</h3>
+                        <p>Decode and verify JWT tokens</p>
+                        <button class="tool-btn">Open Tool</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="generators" class="content-section">
+                <div class="section-header">
+                    <h2>Generators</h2>
+                    <p>Generate various types of data and identifiers</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="password-generator">
+                        <h3>Password Generator</h3>
+                        <p>Generate secure random passwords</p>
+                        <button class="tool-btn">Generate Password</button>
+                    </div>
+                    <div class="tool-card" data-tool="uuid-generator">
+                        <h3>UUID Generator</h3>
+                        <p>Generate UUID v4 identifiers</p>
+                        <button class="tool-btn">Generate UUID</button>
+                    </div>
+                    <div class="tool-card" data-tool="hash-generator">
+                        <h3>Hash Generator</h3>
+                        <p>Generate MD5, SHA-1, SHA-256 hashes</p>
+                        <button class="tool-btn">Generate Hash</button>
+                    </div>
+                    <div class="tool-card" data-tool="lorem-ipsum">
+                        <h3>Lorem Ipsum</h3>
+                        <p>Generate placeholder text</p>
+                        <button class="tool-btn">Generate Text</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="performance" class="content-section">
+                <div class="section-header">
+                    <h2>Performance Tools</h2>
+                    <p>Analyze website performance metrics and Core Web Vitals</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="web-vitals">
+                        <h3>Web Vitals Analyzer</h3>
+                        <p>Measure Core Web Vitals: TTFP, FCP, LCP, INP, CLS</p>
+                        <button class="tool-btn">Analyze Performance</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="security-checks" class="content-section">
+                <div class="section-header">
+                    <h2>Security Checks</h2>
+                    <p>Analyze security headers and SSL certificates</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="ssl-checker">
+                        <h3>SSL Certificate Checker</h3>
+                        <p>Check SSL certificate validity and details</p>
+                        <button class="tool-btn">Check Certificate</button>
+                    </div>
+                    <div class="tool-card" data-tool="security-headers">
+                        <h3>Security Headers</h3>
+                        <p>Analyze website security headers</p>
+                        <button class="tool-btn">Analyze Headers</button>
+                    </div>
+                    <div class="tool-card" data-tool="password-strength">
+                        <h3>Password Strength</h3>
+                        <p>Test password strength and security</p>
+                        <button class="tool-btn">Test Password</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="settings" class="content-section">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                    <p>Customize your OpTools experience</p>
+                </div>
+                
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Appearance</h3>
+                        <div class="setting-item">
+                            <label for="theme-select">Theme:</label>
+                            <select id="theme-select">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="auto">Auto</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="font-size">Font Size:</label>
+                            <input type="range" id="font-size" min="12" max="18" value="14">
+                            <span id="font-size-display">14px</span>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3>Performance</h3>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="auto-save" checked>
+                                Auto-save form data
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="show-animations" checked>
+                                Show animations
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3>Network Tools</h3>
+                        <div class="setting-item">
+                            <label for="default-timeout">Default Timeout (seconds):</label>
+                            <input type="number" id="default-timeout" min="5" max="60" value="10">
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="show-raw-output" checked>
+                                Show raw command output
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3>Data Management</h3>
+                        <div class="setting-item">
+                            <button id="export-settings-btn" class="secondary-btn">Export Settings</button>
+                            <button id="import-settings-btn" class="secondary-btn">Import Settings</button>
+                        </div>
+                        <div class="setting-item">
+                            <button id="clear-data-btn" class="danger-btn">Clear All Data</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Domain Resolver Modal -->
+    <div id="domain-resolver-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Domain Resolver</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="domain-input">Enter domain:</label>
+                    <input type="text" id="domain-input" placeholder="e.g., example.com">
+                </div>
+                
+                <div class="input-group">
+                    <label for="manual-ip">Manual IP (optional):</label>
+                    <input type="text" id="manual-ip" placeholder="e.g., 1.1.1.1 (leave empty to auto-resolve)">
+                </div>
+
+                <div class="port-selection">
+                    <label>Test Ports:</label>
+                    <div class="port-checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="80" checked> Port 80 (HTTP)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="443" checked> Port 443 (HTTPS)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="59123"> Port 59123
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="59789"> Port 59789
+                        </label>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="check-domain-btn">Check Domain</button>
+                </div>
+
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Checking domain resolution...</p>
+                </div>
+                <div id="results" class="results-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Base64 Encoder/Decoder Modal -->
+    <div id="base64-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Base64 Encoder/Decoder</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="encoding-tabs">
+                    <button class="tab-btn active" data-mode="encode">Encode</button>
+                    <button class="tab-btn" data-mode="decode">Decode</button>
+                </div>
+                
+                <div class="encoding-content">
+                    <div class="input-group">
+                        <label for="base64-input">Input:</label>
+                        <textarea id="base64-input" rows="6" placeholder="Enter text to encode or decode..."></textarea>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="base64-process-btn">Encode</button>
+                        <button id="base64-clear-btn">Clear</button>
+                        <button id="base64-copy-btn">Copy Output</button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="base64-output">Output:</label>
+                        <textarea id="base64-output" rows="6" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- URL Encoder/Decoder Modal -->
+    <div id="url-encoder-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>URL Encoder/Decoder</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="encoding-tabs">
+                    <button class="tab-btn active" data-mode="encode">Encode</button>
+                    <button class="tab-btn" data-mode="decode">Decode</button>
+                </div>
+                
+                <div class="encoding-content">
+                    <div class="input-group">
+                        <label for="url-input">Input:</label>
+                        <textarea id="url-input" rows="6" placeholder="Enter URL or text to encode/decode..."></textarea>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="url-process-btn">Encode</button>
+                        <button id="url-clear-btn">Clear</button>
+                        <button id="url-copy-btn">Copy Output</button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="url-output">Output:</label>
+                        <textarea id="url-output" rows="6" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML Entity Encoder/Decoder Modal -->
+    <div id="html-encoder-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>HTML Entity Encoder/Decoder</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="encoding-tabs">
+                    <button class="tab-btn active" data-mode="encode">Encode</button>
+                    <button class="tab-btn" data-mode="decode">Decode</button>
+                </div>
+                
+                <div class="encoding-content">
+                    <div class="input-group">
+                        <label for="html-input">Input:</label>
+                        <textarea id="html-input" rows="6" placeholder="Enter HTML or text to encode/decode..."></textarea>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="html-process-btn">Encode</button>
+                        <button id="html-clear-btn">Clear</button>
+                        <button id="html-copy-btn">Copy Output</button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="html-output">Output:</label>
+                        <textarea id="html-output" rows="6" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JWT Decoder Modal -->
+    <div id="jwt-decoder-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>JWT Decoder</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="jwt-input">JWT Token:</label>
+                    <textarea id="jwt-input" rows="4" placeholder="Paste your JWT token here..."></textarea>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="jwt-decode-btn">Decode JWT</button>
+                    <button id="jwt-clear-btn">Clear</button>
+                </div>
+                
+                <div id="jwt-results" class="jwt-results hidden">
+                    <div class="jwt-section">
+                        <h4>Header</h4>
+                        <pre id="jwt-header"></pre>
+                    </div>
+                    <div class="jwt-section">
+                        <h4>Payload</h4>
+                        <pre id="jwt-payload"></pre>
+                    </div>
+                    <div class="jwt-section">
+                        <h4>Signature</h4>
+                        <pre id="jwt-signature"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Generator Modal -->
+    <div id="password-generator-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Password Generator</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="password-options">
+                    <div class="input-group">
+                        <label for="password-length">Password Length:</label>
+                        <input type="range" id="password-length" min="8" max="32" value="16">
+                        <span id="length-display">16</span>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="include-uppercase" checked> Uppercase (A-Z)</label>
+                        <label><input type="checkbox" id="include-lowercase" checked> Lowercase (a-z)</label>
+                        <label><input type="checkbox" id="include-numbers" checked> Numbers (0-9)</label>
+                        <label><input type="checkbox" id="include-symbols" checked> Symbols (!@#$%)</label>
+                    </div>
+                </div>
+                
+                <div class="password-result">
+                    <input type="text" id="generated-password" readonly>
+                    <div class="password-strength-meter">
+                        <div id="strength-bar"></div>
+                        <span id="strength-text">Strong</span>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="generate-password-btn">Generate Password</button>
+                    <button id="copy-password-btn">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UUID Generator Modal -->
+    <div id="uuid-generator-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>UUID Generator</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="generator-options">
+                    <div class="input-group">
+                        <label for="uuid-version">UUID Version:</label>
+                        <select id="uuid-version">
+                            <option value="4">Version 4 (Random)</option>
+                            <option value="1">Version 1 (Time-based)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="uuid-count">Number of UUIDs:</label>
+                        <input type="number" id="uuid-count" min="1" max="100" value="1">
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="generate-uuid-btn">Generate UUID</button>
+                    <button id="uuid-clear-btn">Clear</button>
+                    <button id="uuid-copy-btn">Copy All</button>
+                </div>
+                
+                <div class="input-group">
+                    <label for="uuid-output">Generated UUIDs:</label>
+                    <textarea id="uuid-output" rows="8" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hash Generator Modal -->
+    <div id="hash-generator-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Hash Generator</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="hash-input">Input Text:</label>
+                    <textarea id="hash-input" rows="4" placeholder="Enter text to hash..."></textarea>
+                </div>
+                
+                <div class="hash-types">
+                    <label><input type="checkbox" value="md5" checked> MD5</label>
+                    <label><input type="checkbox" value="sha1" checked> SHA-1</label>
+                    <label><input type="checkbox" value="sha256" checked> SHA-256</label>
+                    <label><input type="checkbox" value="sha512"> SHA-512</label>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="generate-hash-btn">Generate Hashes</button>
+                    <button id="hash-clear-btn">Clear</button>
+                </div>
+                
+                <div id="hash-results" class="hash-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lorem Ipsum Generator Modal -->
+    <div id="lorem-ipsum-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Lorem Ipsum Generator</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="lorem-options">
+                    <div class="input-group">
+                        <label for="lorem-type">Generate:</label>
+                        <select id="lorem-type">
+                            <option value="paragraphs">Paragraphs</option>
+                            <option value="words">Words</option>
+                            <option value="sentences">Sentences</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="lorem-count">Count:</label>
+                        <input type="number" id="lorem-count" min="1" max="50" value="3">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>
+                            <input type="checkbox" id="start-with-lorem"> Start with "Lorem ipsum..."
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="generate-lorem-btn">Generate Text</button>
+                    <button id="lorem-clear-btn">Clear</button>
+                    <button id="lorem-copy-btn">Copy Text</button>
+                </div>
+                
+                <div class="input-group">
+                    <label for="lorem-output">Generated Text:</label>
+                    <textarea id="lorem-output" rows="10" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IP Lookup Modal -->
+    <div id="ip-lookup-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>IP Lookup</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="ip-input">IP Address or Domain:</label>
+                    <input type="text" id="ip-input" placeholder="e.g., 8.8.8.8 or google.com">
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="lookup-ip-btn">Lookup IP</button>
+                    <button id="ip-clear-btn">Clear</button>
+                </div>
+                
+                <div id="ip-loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Looking up IP information...</p>
+                </div>
+                
+                <div id="ip-results" class="results-container hidden">
+                    <div class="ip-info-card">
+                        <h3>IP Information</h3>
+                        <div id="ip-details"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHOIS Lookup Modal -->
+    <div id="whois-lookup-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>WHOIS Lookup</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="whois-input">Domain Name:</label>
+                    <input type="text" id="whois-input" placeholder="e.g., example.com">
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="lookup-whois-btn">WHOIS Lookup</button>
+                    <button id="whois-clear-btn">Clear</button>
+                </div>
+                
+                <div id="whois-loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Performing WHOIS lookup...</p>
+                </div>
+                
+                <div id="whois-results" class="results-container hidden">
+                    <pre id="whois-data"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DNS Lookup Modal -->
+    <div id="dns-lookup-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>DNS Lookup</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="dns-input">Domain Name:</label>
+                    <input type="text" id="dns-input" placeholder="e.g., example.com">
+                </div>
+                
+                <div class="dns-types">
+                    <label>Record Types:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" value="A" checked> A Records</label>
+                        <label><input type="checkbox" value="AAAA"> AAAA Records</label>
+                        <label><input type="checkbox" value="MX" checked> MX Records</label>
+                        <label><input type="checkbox" value="NS" checked> NS Records</label>
+                        <label><input type="checkbox" value="TXT"> TXT Records</label>
+                        <label><input type="checkbox" value="CNAME"> CNAME Records</label>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="lookup-dns-btn">DNS Lookup</button>
+                    <button id="dns-clear-btn">Clear</button>
+                </div>
+                
+                <div id="dns-loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Performing DNS lookup...</p>
+                </div>
+                
+                <div id="dns-results" class="results-container hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SSL Certificate Checker Modal -->
+    <div id="ssl-checker-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>SSL Certificate Checker</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="ssl-input">Domain/URL:</label>
+                    <input type="text" id="ssl-input" placeholder="e.g., google.com or https://example.com">
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="check-ssl-btn">Check SSL Certificate</button>
+                    <button id="ssl-clear-btn">Clear</button>
+                </div>
+                
+                <div id="ssl-loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Checking SSL certificate...</p>
+                </div>
+                
+                <div id="ssl-results" class="results-container hidden">
+                    <div class="ssl-status"></div>
+                    <div class="ssl-details"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Headers Modal -->
+    <div id="security-headers-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Security Headers Analyzer</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="headers-input">URL:</label>
+                    <input type="text" id="headers-input" placeholder="e.g., https://example.com">
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="analyze-headers-btn">Analyze Headers</button>
+                    <button id="headers-clear-btn">Clear</button>
+                </div>
+                
+                <div id="headers-loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing security headers...</p>
+                </div>
+                
+                <div id="headers-results" class="results-container hidden">
+                    <div class="security-score"></div>
+                    <div class="headers-analysis"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Strength Checker Modal -->
+    <div id="password-strength-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Password Strength Checker</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="password-input">Password:</label>
+                    <input type="password" id="password-input" placeholder="Enter password to test">
+                    <button type="button" id="toggle-password" class="toggle-btn">👁️</button>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="check-strength-btn">Check Strength</button>
+                    <button id="password-clear-btn">Clear</button>
+                </div>
+                
+                <div id="strength-results" class="strength-results hidden">
+                    <div class="strength-meter-display">
+                        <div class="strength-bar-container">
+                            <div id="password-strength-bar"></div>
+                        </div>
+                        <span id="password-strength-text">Weak</span>
+                    </div>
+                    
+                    <div class="strength-details">
+                        <h4>Password Analysis:</h4>
+                        <ul id="strength-criteria"></ul>
+                    </div>
+                    
+                    <div class="security-tips">
+                        <h4>Security Tips:</h4>
+                        <ul id="security-recommendations"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Web Vitals Modal -->
+    <div id="web-vitals-modal" class="tool-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Web Vitals Analyzer</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="url-input">Enter URL to analyze:</label>
+                    <input type="text" id="url-input" placeholder="e.g., https://example.com">
+                </div>
+
+                <div class="action-buttons">
+                    <button id="analyze-url-btn">Analyze Performance</button>
+                </div>
+
+                <div id="vitals-loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing website performance...</p>
+                </div>
+
+                <div id="vitals-results" class="results-container hidden">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <h4>TTFP</h4>
+                            <p class="metric-label">Time to First Paint</p>
+                            <p class="metric-value" id="ttfp-value">-</p>
+                            <span class="metric-status" id="ttfp-status"></span>
+                        </div>
+                        <div class="metric-card">
+                            <h4>FCP</h4>
+                            <p class="metric-label">First Contentful Paint</p>
+                            <p class="metric-value" id="fcp-value">-</p>
+                            <span class="metric-status" id="fcp-status"></span>
+                        </div>
+                        <div class="metric-card">
+                            <h4>LCP</h4>
+                            <p class="metric-label">Largest Contentful Paint</p>
+                            <p class="metric-value" id="lcp-value">-</p>
+                            <span class="metric-status" id="lcp-status"></span>
+                        </div>
+                        <div class="metric-card">
+                            <h4>INP</h4>
+                            <p class="metric-label">Interaction to Next Paint</p>
+                            <p class="metric-value" id="inp-value">-</p>
+                            <span class="metric-status" id="inp-status"></span>
+                        </div>
+                        <div class="metric-card">
+                            <h4>CLS</h4>
+                            <p class="metric-label">Cumulative Layout Shift</p>
+                            <p class="metric-value" id="cls-value">-</p>
+                            <span class="metric-status" id="cls-status"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-summary">
+                        <h3>Performance Summary</h3>
+                        <div id="performance-score"></div>
+                        <div id="recommendations"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
