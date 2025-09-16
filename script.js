@@ -255,6 +255,14 @@ class OpTools {
                 requestBody.manualIp = manualIp;
             }
 
+            // Debug logging
+            console.log('Domain check request:', {
+                domain: domain,
+                ports: selectedPorts,
+                manualIp: manualIp || 'none',
+                requestBody: requestBody
+            });
+
             const response = await fetch('/api/domain-check', {
                 method: 'POST',
                 headers: {
@@ -263,19 +271,35 @@ class OpTools {
                 body: JSON.stringify(requestBody)
             });
 
+            console.log('Response status:', response.status);
+            console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                // Try to get error details from response
+                let errorDetails = '';
+                try {
+                    const errorData = await response.json();
+                    errorDetails = errorData.error || 'Unknown error';
+                    console.log('Error response body:', errorData);
+                } catch (e) {
+                    const errorText = await response.text();
+                    errorDetails = errorText || 'No error details';
+                    console.log('Error response text:', errorText);
+                }
+                throw new Error(`HTTP ${response.status}: ${errorDetails}`);
             }
 
             const data = await response.json();
+            console.log('Success response:', data);
             this.displayResults(data);
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Domain check error:', error);
+            console.error('Error stack:', error.stack);
             results.innerHTML = `
                 <div class="result-item">
                     <h4>Error</h4>
                     <p style="color: red;">An error occurred while checking: ${error.message}</p>
-                    <p style="color: #666; font-size: 14px;">Please ensure the backend service is running</p>
+                    <p style="color: #666; font-size: 14px;">Check browser console for more details</p>
                 </div>
             `;
         } finally {

@@ -19,9 +19,24 @@ app.get('/', (req, res) => {
 // Domain check API endpoint
 app.post('/api/domain-check', async (req, res) => {
     try {
+        console.log('Domain check request received:', {
+            body: req.body,
+            headers: req.headers,
+            timestamp: new Date().toISOString()
+        });
+
         const { domain, manualIp, ports = [80] } = req.body;
 
+        console.log('Parsed request data:', {
+            domain: domain,
+            manualIp: manualIp,
+            ports: ports,
+            domainType: typeof domain,
+            portsType: typeof ports
+        });
+
         if (!domain || typeof domain !== 'string') {
+            console.log('Invalid domain error:', { domain, type: typeof domain });
             return res.status(400).json({ error: '請提供域名' });
         }
 
@@ -30,6 +45,7 @@ app.post('/api/domain-check', async (req, res) => {
         // Validate domain format
         const domainPattern = /^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*$/;
         if (!domainPattern.test(cleanDomain)) {
+            console.log('Invalid domain format error:', { cleanDomain, pattern: domainPattern });
             return res.status(400).json({ error: '無效的域名格式' });
         }
 
@@ -102,6 +118,13 @@ app.post('/api/domain-check', async (req, res) => {
 
     } catch (error) {
         console.error('Server error:', error);
+        console.error('Error stack:', error.stack);
+        console.error('Request details:', {
+            url: req.url,
+            method: req.method,
+            body: req.body,
+            headers: req.headers
+        });
         res.status(500).json({ error: `伺服器錯誤: ${error.message}` });
     }
 });
