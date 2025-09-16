@@ -66,34 +66,40 @@
                     <p class="welcome-text">Welcome to OpTools – Your all-in-one operations toolkit</p>
                 </div>
 
-                <!-- Stats Cards -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">👥</div>
-                        <div class="stat-content">
-                            <h3>Team Members</h3>
-                            <p class="stat-value">8</p>
+                <!-- Tools Overview -->
+                <div class="tools-overview">
+                    <div class="overview-grid">
+                        <div class="overview-card">
+                            <div class="card-icon">🚀</div>
+                            <div class="card-content">
+                                <h3>Performance Tools</h3>
+                                <p>Web Vitals analyzer for performance metrics</p>
+                                <button class="card-btn" onclick="window.optools.openTool('web-vitals')">Use Tool</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">🔒</div>
-                        <div class="stat-content">
-                            <h3>Security Score</h3>
-                            <p class="stat-value">98%</p>
+                        <div class="overview-card">
+                            <div class="card-icon">🔧</div>
+                            <div class="card-content">
+                                <h3>Development Tools</h3>
+                                <p>Encoders, decoders, generators, and utilities</p>
+                                <button class="card-btn" onclick="window.optools.showSection('development')">Explore</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">📊</div>
-                        <div class="stat-content">
-                            <h3>Active Tools</h3>
-                            <p class="stat-value">12</p>
+                        <div class="overview-card">
+                            <div class="card-icon">🔒</div>
+                            <div class="card-content">
+                                <h3>Security Tools</h3>
+                                <p>Security analysis and vulnerability testing</p>
+                                <button class="card-btn" onclick="window.optools.showSection('security')">Explore</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">✅</div>
-                        <div class="stat-content">
-                            <h3>Tasks Completed</h3>
-                            <p class="stat-value">234</p>
+                        <div class="overview-card">
+                            <div class="card-icon">🌐</div>
+                            <div class="card-content">
+                                <h3>Network Tools</h3>
+                                <p>Domain connectivity and network analysis</p>
+                                <button class="card-btn" onclick="window.optools.showSection('network')">Explore</button>
+                            </div>
                         </div>
                     </div>
                 </div>

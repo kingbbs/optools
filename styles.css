@@ -172,50 +172,66 @@ body {
 }
 
 /* Stats Grid */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+.tools-overview {
     margin-bottom: 30px;
 }
 
-.stat-card {
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.overview-card {
     background: var(--card-bg);
     border-radius: 12px;
-    padding: 20px;
+    padding: 24px;
     box-shadow: var(--shadow);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
-.stat-card:hover {
-    transform: translateY(-4px);
+.overview-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.stat-icon {
-    font-size: 32px;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 12px;
+.card-icon {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 16px;
 }
 
-.stat-content h3 {
+.card-content h3 {
+    font-size: 18px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.card-content p {
     font-size: 14px;
     color: var(--text-secondary);
-    margin-bottom: 4px;
-    font-weight: 500;
+    margin-bottom: 16px;
+    line-height: 1.5;
 }
 
-.stat-value {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--text-primary);
+.card-btn {
+    width: 100%;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 /* Quick Actions */
@@ -543,7 +559,7 @@ body {
         width: 100%;
     }
     
-    .stats-grid {
+    .overview-grid {
         grid-template-columns: 1fr;
     }
     
